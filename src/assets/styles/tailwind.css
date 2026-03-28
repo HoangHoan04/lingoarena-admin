@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+@layer base {
+  html.dark {
+    @apply bg-gray-900 text-white;
+  }
+
+  html.dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}

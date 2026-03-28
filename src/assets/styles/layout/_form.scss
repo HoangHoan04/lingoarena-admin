@@ -1,0 +1,394 @@
+$primary: #1890ff;
+$primary-hover: #40a9ff;
+$error: #ff4d4f;
+$success: #52c41a;
+$radius: 6px;
+$font-size: 13px;
+$transition: all 0.2s ease;
+
+html[data-theme="light"],
+html:not([data-theme]) {
+  --bg-main: #ffffff;
+  --bg-sub: #f5f5f5;
+  --bg-hover: #f0f4f8;
+  --text-main: #333333;
+  --text-sec: #666666;
+  --text-dis: #999999;
+  --border-color: #e0e6ed;
+  --border-hover: #b5c0d0;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 0 0 3px rgba(24, 144, 255, 0.1);
+  --header-grad: linear-gradient(135deg, #cfe8ff, #e6f2ff);
+  --table-th-bg: #e3f2fd;
+  --table-th-text: #1976d2;
+}
+
+html[data-theme="dark"] {
+  --bg-main: #262626;
+  --bg-sub: #1f1f1f;
+  --bg-hover: #333333;
+  --text-main: #e0e0e0;
+  --text-sec: #b0b0b0;
+  --text-dis: #666666;
+  --border-color: #404040;
+  --border-hover: #595959;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-focus: 0 0 0 3px rgba(24, 144, 255, 0.2);
+  --header-grad: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+  --table-th-bg: rgba(24, 144, 255, 0.15);
+  --table-th-text: #1890ff;
+}
+
+@mixin input-adapter {
+  width: 100%;
+  font-size: $font-size;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: $radius;
+  padding: 0.6rem 0.8rem;
+  transition: $transition;
+
+  &::placeholder {
+    color: var(--text-dis);
+  }
+
+  &:hover:not(:disabled):not(.p-disabled):not(:focus) {
+    border-color: var(--border-hover);
+  }
+
+  &:focus,
+  &.p-focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: var(--shadow-focus);
+  }
+
+  &:disabled,
+  &.p-disabled {
+    background-color: var(--bg-sub);
+    color: var(--text-dis);
+    cursor: not-allowed;
+    border-color: var(--border-color);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.form-custom-container .form-field {
+  margin-bottom: 16px;
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: $font-size;
+    color: var(--text-main);
+    .required-mark {
+      color: $error;
+      margin-left: 4px;
+    }
+  }
+}
+
+.p-inputtext,
+.p-inputtextarea,
+.p-inputnumber-input,
+.p-dropdown,
+.p-multiselect,
+.p-calendar .p-inputtext {
+  @include input-adapter;
+}
+
+.p-inputtextarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.p-dropdown,
+.p-multiselect {
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  .p-dropdown-label,
+  .p-multiselect-label {
+    padding: 0.6rem 0;
+    color: var(--text-main);
+    border: none;
+    &.p-placeholder {
+      color: var(--text-dis);
+      border: none;
+    }
+  }
+  .p-dropdown-trigger,
+  .p-multiselect-trigger {
+    color: var(--text-sec);
+    width: 30px;
+  }
+}
+
+.p-dropdown-panel,
+.p-multiselect-panel,
+.p-datepicker {
+  background-color: var(--bg-main) !important;
+  border: 1px solid var(--border-color);
+  border-radius: $radius;
+  box-shadow: var(--shadow);
+
+  .p-dropdown-items .p-dropdown-item,
+  .p-multiselect-items .p-multiselect-item {
+    color: var(--text-main);
+    padding: 0.75rem 1rem;
+    &:hover {
+      background-color: var(--bg-hover);
+    }
+    &.p-highlight {
+      background-color: rgba($primary, 0.1);
+      color: $primary;
+    }
+  }
+
+  .p-datepicker-header {
+    background: var(--bg-main);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    button {
+      color: var(--text-main);
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.p-tabview .p-tabview-nav {
+  padding: 0;
+  li.p-highlight .p-tabview-nav-link {
+    background: var(--bg-sub);
+    border-color: var(--border-color);
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+.p-tabview-nav li .p-tabview-nav-link {
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  margin-right: 10px;
+}
+
+.p-tabview-panels {
+  border: none;
+  padding: 0;
+}
+
+.p-accordion {
+  border-radius: $radius;
+  overflow: hidden;
+  .p-accordion-header .p-accordion-header-link {
+    background: var(--header-grad);
+    color: $primary;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    padding: 1rem;
+  }
+  .p-accordion-content {
+    background: var(--bg-main);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+  }
+}
+
+.p-datatable {
+  .p-datatable-thead > tr > th {
+    background: var(--table-th-bg);
+    color: var(--table-th-text);
+    border-color: var(--border-color);
+    padding: 12px 16px;
+  }
+  .p-datatable-tbody > tr {
+    background: var(--bg-main);
+    color: var(--text-main);
+    border-color: var(--border-color);
+    &:hover {
+      background: var(--bg-hover);
+    }
+    &.p-datatable-odd {
+      background: var(--bg-sub);
+    }
+  }
+}
+
+.p-dialog {
+  border-radius: $radius;
+  box-shadow: var(--shadow);
+  .p-dialog-header {
+    background: var(--header-grad);
+    color: $primary;
+    padding: 1rem;
+  }
+  .p-dialog-content {
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding: 1.5rem;
+  }
+  .p-dialog-footer {
+    background: var(--bg-sub);
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+.p-button {
+  border-radius: $radius;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  transition: $transition;
+  &.p-button-text {
+    color: $primary;
+    &:hover {
+      background: rgba($primary, 0.1);
+    }
+  }
+  &.p-button-danger {
+    background: $error !important;
+    border-color: $error !important;
+  }
+  &.p-button-secondary {
+    background: #8c8c8c !important;
+    border-color: #8c8c8c !important;
+  }
+}
+
+.p-inputswitch {
+  width: 44px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+
+  .p-inputswitch-slider {
+    border-radius: 12px;
+    transition:
+      background-color 0.2s,
+      box-shadow 0.2s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &:before {
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      top: 50%;
+      margin-top: -9px;
+      border-radius: 50%;
+      transition: transform 0.2s;
+      content: "";
+      position: absolute;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .p-accordion-content .p-grid {
+    display: block;
+  }
+  .p-inputtext,
+  .p-dropdown,
+  .p-button {
+    font-size: $font-size;
+  }
+}
+
+.base-view {
+  background: var(--bg-main);
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-hover);
+    border-radius: 3px;
+  }
+}
+
+html,
+body,
+*,
+.p-component {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.p-paginator {
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  font-size: 13px;
+  flex-wrap: nowrap;
+}
+
+.custom-grid-paginator {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: transparent !important;
+  padding: 0 10px;
+  border: none !important;
+}
+
+.custom-grid-paginator .p-paginator-current {
+  text-align: left;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-grid-paginator .p-paginator-first {
+  margin-left: auto !important;
+}
+
+.custom-grid-paginator .p-paginator-last {
+  margin-right: auto !important;
+}
+
+.custom-grid-paginator .p-dropdown {
+  width: 50px !important;
+  height: 40px !important;
+  min-width: unset !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  margin-right: 60px !important;
+}
+
+.custom-grid-paginator .p-dropdown .p-inputtext {
+  padding: 0 !important;
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+}
+
+.custom-grid-paginator .p-dropdown .p-dropdown-trigger {
+  display: none;
+}
+
+.p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link {
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+}

@@ -1,0 +1,251 @@
+.login-page[data-theme="light"] {
+  background-color: #f0f4f8;
+
+  .settings-btn {
+    color: #333333;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .login-card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    .card-title {
+      color: #2196f3;
+    }
+
+    .form-label {
+      color: #333333;
+    }
+
+    .form-input {
+      background-color: #ffffff;
+      color: #333333;
+      border-color: #cccccc;
+
+      &:focus {
+        border-color: #2196f3;
+      }
+
+      &.error {
+        border-color: #e53935;
+      }
+    }
+
+    .password-toggle {
+      color: #666666;
+    }
+
+    .submit-btn {
+      background-color: #2196f3;
+
+      &:hover {
+        background-color: #1976d2;
+      }
+    }
+  }
+}
+
+.login-page[data-theme="dark"] {
+  background-color: #1a1a1a;
+
+  .settings-btn {
+    color: #e0e0e0;
+    background-color: rgba(45, 45, 45, 0.8);
+
+    &:hover {
+      background-color: rgba(45, 45, 45, 0.95);
+    }
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+  }
+
+  .login-card {
+    background-color: #2d2d2d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+    .card-title {
+      color: #4a9eff;
+    }
+
+    .form-label {
+      color: #e0e0e0;
+    }
+
+    .form-input {
+      background-color: #363636;
+      color: #e0e0e0;
+      border-color: #404040;
+
+      &:focus {
+        border-color: #4a9eff;
+      }
+
+      &.error {
+        border-color: #e53935;
+      }
+    }
+
+    .password-toggle {
+      color: #a0a0a0;
+    }
+
+    .submit-btn {
+      background-color: #4a9eff;
+
+      &:hover {
+        background-color: #3d8ae0;
+      }
+    }
+  }
+}
+
+.login-page {
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+
+  .settings-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .hero-section {
+    transition: background 0.3s ease;
+
+    .logo-icon {
+      font-size: 4rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-description {
+      color: #e0e7ff;
+      line-height: 1.6;
+    }
+  }
+
+  .login-card {
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+    max-width: 400px;
+    width: 100%;
+
+    .card-title {
+      text-align: center;
+      margin: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+
+      .required {
+        color: #e53935;
+      }
+    }
+
+    .form-input {
+      width: 100%;
+      height: 42px;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid;
+      border-radius: 8px;
+      outline: none;
+      font-size: 13px;
+      transition: all 0.3s ease;
+
+      &.with-icon {
+        padding-right: 2.5rem;
+      }
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: color 0.2s ease;
+    }
+
+    .submit-btn {
+      width: 100%;
+      border: none;
+      font-weight: 600;
+      height: 44px;
+      transition: background-color 0.3s ease;
+    }
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    .hero-section {
+      min-height: 40vh;
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-description {
+        font-size: 0.95rem;
+      }
+    }
+
+    .login-section {
+      min-height: 60vh;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .login-page {
+    .hero-section {
+      min-height: 100vh;
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+      }
+    }
+
+    .login-section {
+      min-height: 100vh;
+    }
+  }
+}
