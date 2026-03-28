@@ -1,6 +1,7 @@
 import { useConfig } from "@/context/ConfigContext";
 import { useTheme } from "@/context/ThemeContext";
-import { findMatchingRoutePattern } from "@/utils/route.util";
+import { useTranslation } from "@/context/TranslationContext";
+import { findMatchingRoutePattern } from "@/utils";
 import { Button } from "primereact/button";
 import { Menu } from "primereact/menu";
 import type { MenuItem } from "primereact/menuitem";
@@ -12,6 +13,7 @@ type Tab = {
   label: string;
   path: string;
   icon?: string;
+  translationKey?: string;
 };
 
 type AppTabHeaderProps = {
@@ -21,6 +23,7 @@ type AppTabHeaderProps = {
 const AppTabHeader = ({ routes }: AppTabHeaderProps) => {
   const { theme } = useTheme();
   const { settings } = useConfig();
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [openTabs, setOpenTabs] = useState<Tab[]>([]);
@@ -106,7 +109,7 @@ const AppTabHeader = ({ routes }: AppTabHeaderProps) => {
   };
 
   const overflowMenuItems: MenuItem[] = hiddenTabs.map((tab) => ({
-    label: tab.label,
+    label: tab.translationKey ? t(tab.translationKey) : tab.label,
     icon: tab.icon || "pi pi-file",
     className: activeTab === tab.id ? "font-bold text-blue-500" : "",
     command: () => {
@@ -148,7 +151,9 @@ const AppTabHeader = ({ routes }: AppTabHeaderProps) => {
                 }
               `}
             >
-              <span className="truncate flex-1">{tab.label}</span>
+              <span className="truncate flex-1">
+                {tab.translationKey ? t(tab.translationKey) : tab.label}
+              </span>
               <i
                 className="pi pi-times hover:bg-gray-500/20 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                 onClick={(e) => handleCloseTab(e, tab.id)}

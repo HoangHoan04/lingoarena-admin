@@ -1,4 +1,5 @@
 import { ROUTES } from "@/common/constants/routes";
+import { useTranslation } from "@/context/TranslationContext";
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Ripple } from "primereact/ripple";
 import { useCallback, useMemo } from "react";
@@ -13,6 +14,7 @@ type BreadcrumbItem = {
 
 const Breadcrumbs = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
   const { pathname } = useLocation();
+  const { t } = useTranslation();
 
   const matchPathToPattern = useCallback(
     (pathname: string, pattern?: string): boolean => {
@@ -77,6 +79,7 @@ const Breadcrumbs = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
           label: "Trang chủ",
           path: "/",
           icon: "pi-home",
+          translationKey: "menu.home",
         },
       ];
 
@@ -87,6 +90,7 @@ const Breadcrumbs = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
           label: "Trang chủ",
           path: "/",
           icon: "pi-home",
+          translationKey: "menu.home",
         },
       ];
 
@@ -112,6 +116,7 @@ const Breadcrumbs = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
         label: "Trang chủ",
         path: "/",
         icon: "pi-home",
+        translationKey: "menu.home",
       },
       ...buildChainReverse(matchedRoute),
     ];
@@ -121,7 +126,9 @@ const Breadcrumbs = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
     return breadcrumbChain.map((item, idx) => {
       const isLast = idx === breadcrumbChain.length - 1;
       const linkColor = "text-[#1890ff] hover:text-[#40a9ff]";
-      const displayLabel = item.label;
+      const displayLabel = item.translationKey
+        ? t(item.translationKey)
+        : item.label;
 
       return {
         template: () => (
@@ -157,7 +164,7 @@ const Breadcrumbs = ({ theme = "light" }: { theme?: "light" | "dark" }) => {
         ),
       };
     });
-  }, [breadcrumbChain]);
+  }, [breadcrumbChain, t]);
 
   return (
     <div

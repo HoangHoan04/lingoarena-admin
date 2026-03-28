@@ -1,60 +1,49 @@
-import { login } from "@/assets/animations";
 import LoginForm from "@/components/auth/LoginForm";
-import ConfigSetting from "@/components/layout/ConfigSetting";
-import { useTheme } from "@/context/ThemeContext";
-import Lottie from "lottie-react";
-import { Button } from "primereact/button";
-import { useState } from "react";
 
 export default function LoginPage() {
-  const { theme } = useTheme();
-  const [showSettings, setShowSettings] = useState(false);
-
   return (
-    <div
-      className="login-page flex flex-col md:flex-row relative"
-      data-theme={theme}
-    >
-      <Button
-        icon="pi pi-cog"
-        rounded
-        text
-        severity="secondary"
-        onClick={() => setShowSettings(true)}
-        tooltip="Cài đặt"
-        tooltipOptions={{ position: "left" }}
-        className="settings-btn"
-      />
+    <div className="flex min-h-screen bg-[#0a0a0f] font-['DM_Sans'] overflow-hidden">
+      <div className="hidden md:flex flex-1 relative items-center justify-center p-16 bg-linear-to-br from-[#0d0d1a] via-[#0f1628] to-[#0a1020] overflow-hidden">
+        <div
+          className="absolute inset-0 z-0 opacity-20"
+          style={{
+            backgroundImage: `linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)`,
+            backgroundSize: "48px 48px",
+          }}
+        ></div>
 
-      <ConfigSetting
-        visible={showSettings}
-        onHide={() => setShowSettings(false)}
-      />
-
-      <div className="hero-section flex-1 flex flex-col justify-center items-center p-8">
-        <div className="max-w-150 w-full text-center">
-          <div className="logo-icon mb-4">
-            <i className="pi pi-building"></i>
+        <div className="absolute -top-20 -left-20 w-105 h-105 rounded-full bg-indigo-600/30 blur-[80px] animate-pulse"></div>
+        <div className="absolute -bottom-15 -right-15 w-75 h-75 rounded-full bg-cyan-600/30 blur-[80px] animate-pulse delay-700"></div>
+        <div className="relative z-10 w-full max-w-105 space-y-12">
+          <div className="flex items-center gap-3">
+            <i className="pi pi-sparkles text-[22px] text-[#818cf8]"></i>
+            <span className="font-['Syne'] font-extrabold text-xl text-white tracking-[0.12em] uppercase">
+              LingoArena
+            </span>
           </div>
 
-          <div className="max-w-100 mx-auto">
-            <Lottie animationData={login} loop />
-          </div>
-
-          <div className="mt-8">
-            <h1 className="hero-title mb-4">
-              Hệ thống đặt tour du lịch HIMLAMTOURIST
-            </h1>
-            <p className="hero-description max-w-125 mx-auto">
-              Chào mừng bạn đến với hệ thống quản lý đặt tour du lịch của chúng
-              tôi. Vui lòng đăng nhập để tiếp tục và trải nghiệm các tính năng
-              quản lý tour du lịch một cách dễ dàng và hiệu quả.
+          <div className="space-y-4">
+            <h2 className="font-['Syne'] text-4xl md:text-5xl font-bold text-white leading-tight">
+              Hệ thống luyện thi
+              <br />
+              Aptis Online.
+            </h2>
+            <p className="text-[#94a3b8] text-base leading-relaxed">
+              Hệ thống quản lý luyện thi chuyên nghiệp, hiện đại và tối ưu cho
+              học viên.
             </p>
+          </div>
+
+          <div className="flex gap-4 opacity-40">
+            <div className="w-12 h-1.5 bg-indigo-500 rounded-full"></div>
+            <div className="w-12 h-1.5 bg-cyan-500 rounded-full"></div>
+            <div className="w-12 h-1.5 bg-indigo-500/30 rounded-full"></div>
           </div>
         </div>
       </div>
 
-      <div className="login-section flex-1 flex justify-center items-center p-8">
+      {/* RIGHT SIDE - Form Section */}
+      <div className="w-full md:w-120 bg-white flex items-center justify-center p-10 md:p-12">
         <LoginForm />
       </div>
     </div>

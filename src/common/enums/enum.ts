@@ -137,44 +137,6 @@ export const enumData = {
     NOVEMBER: { code: 11, name: "Tháng 11" },
     DECEMBER: { code: 12, name: "Tháng 12" },
   },
-  TRAVEL_HINT_TYPE: {
-    DOMESTIC: { code: "DOMESTIC", name: "Trong nước" },
-    INTERNATIONAL: { code: "INTERNATIONAL", name: "Nước ngoài" },
-  },
-
-  TAG_TRAVEL_HINT: {
-    BEACH: { code: "BEACH", name: "Bãi biển" },
-    MOUNTAIN: { code: "MOUNTAIN", name: "Núi" },
-    CULTURE: { code: "CULTURE", name: "Văn hóa" },
-    ADVENTURE: { code: "ADVENTURE", name: "Phiêu lưu" },
-    RELAXATION: { code: "RELAXATION", name: "Nghỉ dưỡng" },
-    NATURE: { code: "NATURE", name: "Thiên nhiên" },
-    CITY: { code: "CITY", name: "Thành phố" },
-  },
-
-  TOUR_STATUS: {
-    DRAFT: { code: "DRAFT", name: "Bản nháp" },
-    ACTIVE: { code: "ACTIVE", name: "Đang hoạt động" },
-    INACTIVE: { code: "INACTIVE", name: "Ngưng hoạt động" },
-  },
-
-  SPECIALTIES: {
-    HISTORY: { code: "HISTORY", name: "Lịch sử" },
-    ADVENTURE: { code: "ADVENTURE", name: "Phiêu lưu" },
-    CULTURE: { code: "CULTURE", name: "Văn hóa" },
-    NATURE: { code: "NATURE", name: "Thiên nhiên" },
-    FOOD: { code: "FOOD", name: "Ẩm thực" },
-    SHOPPING: { code: "SHOPPING", name: "Mua sắm" },
-    RELAXATION: { code: "RELAXATION", name: "Nghỉ dưỡng" },
-  },
-
-  LANGUAGES: {
-    VIETNAMESE: { code: "VIETNAMESE", name: "Tiếng Việt" },
-    ENGLISH: { code: "ENGLISH", name: "Tiếng Anh" },
-    CHINESE: { code: "CHINESE", name: "Tiếng Trung" },
-    JAPANESE: { code: "JAPANESE", name: "Tiếng Nhật" },
-    KOREAN: { code: "KOREAN", name: "Tiếng Hàn" },
-  },
 };
 
 export const millisecondInDay = 86400000;

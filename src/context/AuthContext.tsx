@@ -1,6 +1,6 @@
 import type { LoginReq, UserSessionDto } from "@/dto/auth.dto";
 import { authService } from "@/services";
-import tokenCache from "@/utils/token-cache";
+import { tokenCache } from "@/utils";
 import type { ReactNode } from "react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +50,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       tokenCache.setAuthData(
         response.accessToken,
         response.refreshToken,
-        response.user
+        response.user,
       );
 
       setUser(response.user);

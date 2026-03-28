@@ -1,5 +1,5 @@
 import { EHttpHeaders } from "@/common/constants";
-import tokenCache from "@/utils/token-cache";
+import { tokenCache } from "@/utils";
 import { API_ROUTES } from "./endpoint";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
@@ -11,13 +11,13 @@ interface RequestOptions {
 
 const handleTimeout = (timeout: number) =>
   new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error("Request timed out")), timeout)
+    setTimeout(() => reject(new Error("Request timed out")), timeout),
   );
 
 const request = async <T>(
   url: string,
   method: HttpMethod,
-  options: RequestOptions = {}
+  options: RequestOptions = {},
 ): Promise<T> => {
   const { headers = {}, body, timeout = API_ROUTES.TIMEOUT } = options;
 

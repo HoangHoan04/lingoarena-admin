@@ -1,4 +1,4 @@
-import { ROUTES } from "@/common/constants/routes";
+import { ROUTES } from "@/common/constants";
 
 const MODULE_MAPPING: Record<string, string> = {
   EMPLOYEE_MANAGER: "EMPLOYEE",

@@ -1,6 +1,6 @@
 import { loading } from "@/assets/animations";
-import { ROUTES } from "@/common/constants/routes";
-import { formatTimeAgo } from "@/common/helpers/format";
+import { ROUTES } from "@/common/constants";
+import { formatTimeAgo } from "@/common/helpers/formatHelper";
 import {
   useMarkAllRead,
   useMarkReadList,

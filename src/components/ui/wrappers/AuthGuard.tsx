@@ -1,4 +1,4 @@
-import { ROUTES } from "@/common/constants/routes";
+import { ROUTES } from "@/common/constants";
 import { usePermission } from "@/hooks/layout/usePermission";
 import { useRouter } from "@/routers/hooks";
 import { useEffect } from "react";

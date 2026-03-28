@@ -2,7 +2,7 @@ export const ROUTES = {
   AUTH: {
     LOGIN: {
       key: "LOGIN",
-      label: "Đăng nhập",
+      translationKey: "auth.login",
       path: "/login",
       isShow: false,
     },
@@ -11,7 +11,7 @@ export const ROUTES = {
   OTHER: {
     NOTIFICATION: {
       key: "NOTIFICATION",
-      label: "Thông báo",
+      translationKey: "menu.notification",
       path: "/notifications",
       isShow: false,
     },
@@ -20,7 +20,7 @@ export const ROUTES = {
   MAIN: {
     HOME: {
       key: "HOME",
-      label: "Trang chủ",
+      translationKey: "menu.home",
       path: "/",
       icon: "pi pi-home",
     },
@@ -28,202 +28,62 @@ export const ROUTES = {
     // Quản lý người dùng
     USER_MANAGER: {
       key: "USER_MANAGER",
-      label: "Quản lý người dùng",
+      translationKey: "menu.userManager",
       icon: "pi pi-user",
       path: "/user-manager",
       children: {
-        CUSTOMER_MANAGER: {
-          key: "CUSTOMER_MANAGER",
-          label: "Quản lý khách hàng",
-          path: "/customer-manager",
+        STUDENT_MANAGER: {
+          key: "STUDENT_MANAGER",
+          translationKey: "menu.studentManager",
+          path: "/student-manager",
           children: {
-            ADD_CUSTOMER: {
-              key: "ADD_CUSTOMER",
-              label: "Thêm khách hàng",
-              path: "/customer/add",
+            ADD_STUDENT: {
+              key: "ADD_STUDENT",
+              translationKey: "student.add",
+              path: "/student/add",
               icon: "pi pi-plus-circle",
               isShow: false,
             },
-            EDIT_CUSTOMER: {
-              key: "EDIT_CUSTOMER",
-              label: "Chỉnh sửa khách hàng",
-              path: "/customer/edit/:id",
+            EDIT_STUDENT: {
+              key: "EDIT_STUDENT",
+              translationKey: "student.edit",
+              path: "/student/edit/:id",
               icon: "pi pi-pencil-circle",
               isShow: false,
             },
-            DETAIL_CUSTOMER: {
-              key: "DETAIL_CUSTOMER",
-              label: "Chi tiết khách hàng",
-              path: "/customer/detail/:id",
+            DETAIL_STUDENT: {
+              key: "DETAIL_STUDENT",
+              translationKey: "student.detail",
+              path: "/student/detail/:id",
               icon: "pi pi-info-circle",
               isShow: false,
             },
           },
         },
-        TOUR_GUIDE_MANAGER: {
-          key: "TOUR_GUIDE_MANAGER",
-          label: "Quản lý hướng dẫn viên",
-          path: "/tourguide-manager",
+        TEACHER_MANAGER: {
+          key: "TEACHER_MANAGER",
+          translationKey: "menu.teacherManager",
+          path: "/teacher-manager",
           children: {
-            ADD_TOUR_GUIDE: {
-              key: "ADD_TOUR_GUIDE",
-              label: "Thêm hướng dẫn viên",
-              path: "/tourguide/add",
+            ADD_TEACHER: {
+              key: "ADD_TEACHER",
+              translationKey: "teacher.add",
+              path: "/teacher/add",
               icon: "pi pi-plus-circle",
               isShow: false,
             },
-            EDIT_TOUR_GUIDE: {
-              key: "EDIT_TOUR_GUIDE",
-              label: "Chỉnh sửa hướng dẫn viên",
-              path: "/tourguide/edit/:id",
+            EDIT_TEACHER: {
+              key: "EDIT_TEACHER",
+              translationKey: "teacher.edit",
+              path: "/teacher/edit/:id",
               icon: "pi pi-pencil-circle",
               isShow: false,
             },
-            DETAIL_TOUR_GUIDE: {
-              key: "DETAIL_TOUR_GUIDE",
-              label: "Chi tiết hướng dẫn viên",
-              path: "/tourguide/detail/:id",
+            DETAIL_TEACHER: {
+              key: "DETAIL_TEACHER",
+              translationKey: "teacher.detail",
+              path: "/teacher/detail/:id",
               icon: "pi pi-info-circle",
-              isShow: false,
-            },
-          },
-        },
-      },
-    },
-
-    // Quản lý tour
-    TOUR_MANAGER: {
-      key: "TOUR_MANAGER",
-      label: "Quản lý tour",
-      icon: "pi pi-users",
-      path: "/tour-manager",
-      children: {
-        TOUR_LIST: {
-          key: "TOUR_LIST",
-          label: "Danh sách tour",
-          path: "/tour-list",
-          children: {
-            ADD_TOUR: {
-              key: "ADD_TOUR",
-              label: "Thêm tour",
-              path: "/tour/add",
-              icon: "pi pi-plus-circle",
-              isShow: false,
-            },
-            EDIT_TOUR: {
-              key: "EDIT_TOUR",
-              label: "Chỉnh sửa tour",
-              path: "/tour/edit/:id",
-              icon: "pi pi-pencil-circle",
-              isShow: false,
-            },
-            DETAIL_TOUR: {
-              key: "DETAIL_TOUR",
-              label: "Chi tiết tour",
-              path: "/tour/detail/:id",
-              icon: "pi pi-info-circle",
-              isShow: false,
-            },
-          },
-        },
-
-        TOUR_DETAIL_MANAGER: {
-          key: "TOUR_DETAIL_MANAGER",
-          label: "Quản lý chi tiết tour",
-          path: "/tour-detail-manager",
-          children: {
-            ADD_TOUR_DETAIL: {
-              key: "ADD_TOUR_DETAIL",
-              label: "Thêm chi tiết tour",
-              path: "/tour-detail/add",
-              isShow: false,
-            },
-            EDIT_TOUR_DETAIL: {
-              key: "EDIT_TOUR_DETAIL",
-              label: "Chỉnh sửa chi tiết tour",
-              path: "/tour-detail/edit/:id",
-              isShow: false,
-            },
-            DETAIL_TOUR_DETAIL: {
-              key: "DETAIL_TOUR_DETAIL",
-              label: "Chi tiết chi tiết tour",
-              path: "/tour-detail/detail/:id",
-              isShow: false,
-            },
-          },
-        },
-        TOUR_PRICE_MANAGER: {
-          key: "TOUR_PRICE_MANAGER",
-          label: "Quản lý giá tour",
-          path: "/tour-price-manager",
-          children: {
-            ADD_TOUR_PRICE: {
-              key: "ADD_TOUR_PRICE",
-              label: "Thêm giá tour",
-              path: "/tour-price/add",
-              isShow: false,
-            },
-            EDIT_TOUR_PRICE: {
-              key: "EDIT_TOUR_PRICE",
-              label: "Chỉnh sửa giá tour",
-              path: "/tour-price/edit/:id",
-              isShow: false,
-            },
-            DETAIL_TOUR_PRICE: {
-              key: "DETAIL_TOUR_PRICE",
-              label: "Chi tiết giá tour",
-              path: "/tour-price/detail/:id",
-              isShow: false,
-            },
-          },
-        },
-
-        DESTINATION_MANAGER: {
-          key: "DESTINATION_MANAGER",
-          label: "Quản lý điểm đến",
-          path: "/destination-manager",
-          children: {
-            ADD_DESTINATION: {
-              key: "ADD_DESTINATION",
-              label: "Thêm điểm đến",
-              path: "/destination-manager/add",
-              isShow: false,
-            },
-            EDIT_DESTINATION: {
-              key: "EDIT_DESTINATION",
-              label: "Chỉnh sửa điểm đến",
-              path: "/destination-manager/edit/:id",
-              isShow: false,
-            },
-            DETAIL_DESTINATION: {
-              key: "DETAIL_DESTINATION",
-              label: "Chi tiết điểm đến",
-              path: "/destination-manager/detail/:id",
-              isShow: false,
-            },
-          },
-        },
-        BOOKING_MANAGER: {
-          key: "BOOKING_MANAGER",
-          label: "Quản lý đặt chỗ",
-          path: "/booking-manager",
-          children: {
-            ADD_BOOKING: {
-              key: "ADD_BOOKING",
-              label: "Thêm đặt chỗ",
-              path: "/booking-manager/add",
-              isShow: false,
-            },
-            EDIT_BOOKING: {
-              key: "EDIT_BOOKING",
-              label: "Chỉnh sửa đặt chỗ",
-              path: "/booking-manager/edit/:id",
-              isShow: false,
-            },
-            DETAIL_BOOKING: {
-              key: "DETAIL_BOOKING",
-              label: "Chi tiết đặt chỗ",
-              path: "/booking-manager/detail/:id",
               isShow: false,
             },
           },
@@ -234,31 +94,31 @@ export const ROUTES = {
     // Quản lý tin tức
     NEW_MANAGER: {
       key: "NEW_MANAGER",
-      label: "Quản lý tin tức",
+      translationKey: "menu.newManager",
       icon: "pi pi-images",
       path: "/new-manager",
       children: {
         // Banner
         BANNER_MANAGER: {
           key: "BANNER_MANAGER",
-          label: "Quản lý banner",
+          translationKey: "menu.bannerManager",
           path: "/banner-manager",
           children: {
             ADD_BANNER: {
               key: "ADD_BANNER",
-              label: "Thêm banner",
+              translationKey: "menu.addBanner",
               path: "/banner/add",
               isShow: false,
             },
             EDIT_BANNER: {
               key: "EDIT_BANNER",
-              label: "Chỉnh sửa banner",
+              translationKey: "menu.editBanner",
               path: "/banner/edit/:id",
               isShow: false,
             },
             DETAIL_BANNER: {
               key: "DETAIL_BANNER",
-              label: "Chi tiết banner",
+              translationKey: "menu.detailBanner",
               path: "/banner/detail/:id",
               isShow: false,
             },
@@ -266,24 +126,24 @@ export const ROUTES = {
         },
         NEW_LIST: {
           key: "NEW_LIST",
-          label: "Quản lý tin tức",
+          translationKey: "menu.newManager",
           path: "/new-list",
           children: {
             ADD_NEW: {
               key: "ADD_NEW",
-              label: "Thêm tin tức",
+              translationKey: "menu.addNew",
               path: "/new/add",
               isShow: false,
             },
             EDIT_NEW: {
               key: "EDIT_NEW",
-              label: "Chỉnh sửa tin tức",
+              translationKey: "menu.editNew",
               path: "/new/edit/:id",
               isShow: false,
             },
             DETAIL_NEW: {
               key: "DETAIL_NEW",
-              label: "Chi tiết tin tức",
+              translationKey: "menu.detailNew",
               path: "/new/detail/:id",
               isShow: false,
             },
@@ -291,50 +151,25 @@ export const ROUTES = {
         },
         BLOG_MANAGER: {
           key: "BLOG_MANAGER",
-          label: "Quản lý blog",
+          translationKey: "menu.blogManager",
           path: "/blog-manager",
           children: {
             ADD_BLOG: {
               key: "ADD_BLOG",
-              label: "Thêm blog",
+              translationKey: "menu.addBlog",
               path: "/blog/add",
               isShow: false,
             },
             EDIT_BLOG: {
               key: "EDIT_BLOG",
-              label: "Chỉnh sửa blog",
+              translationKey: "menu.editBlog",
               path: "/blog/edit/:id",
               isShow: false,
             },
             DETAIL_BLOG: {
               key: "DETAIL_BLOG",
-              label: "Chi tiết blog",
+              translationKey: "menu.detailBlog",
               path: "/blog/detail/:id",
-              isShow: false,
-            },
-          },
-        },
-        TRAVEL_HINT_MANAGER: {
-          key: "TRAVEL_HINT_MANAGER",
-          label: "Quản lý gợi ý điểm du lịch",
-          path: "/travel-hint-manager",
-          children: {
-            ADD_TRAVEL_HINT: {
-              key: "ADD_TRAVEL_HINT",
-              label: "Thêm gợi ý điểm du lịch",
-              path: "/travel-hint/add",
-              isShow: false,
-            },
-            EDIT_TRAVEL_HINT: {
-              key: "EDIT_TRAVEL_HINT",
-              label: "Chỉnh sửa gợi ý điểm du lịch",
-              path: "/travel-hint/edit/:id",
-              isShow: false,
-            },
-            DETAIL_TRAVEL_HINT: {
-              key: "DETAIL_TRAVEL_HINT",
-              label: "Chi tiết gợi ý điểm du lịch",
-              path: "/travel-hint/detail/:id",
               isShow: false,
             },
           },
@@ -345,39 +180,57 @@ export const ROUTES = {
     // Quản lý vai trò - quyền
     ROLE_MANAGER: {
       key: "ROLE_MANAGER",
-      label: "Quản lý vai trò",
+      translationKey: "menu.roleManager",
       icon: "pi pi-shield",
       children: {
         ROLE_MANAGER: {
           key: "ROLE_MANAGER",
-          label: "Vai trò",
+          translationKey: "menu.role",
           path: "/role",
           children: {
             ADD_ROLE: {
               key: "ADD_ROLE",
-              label: "Thêm vai trò",
+              translationKey: "role.add",
               path: "/role/add",
               isShow: false,
             },
             EDIT_ROLE: {
               key: "EDIT_ROLE",
-              label: "Chỉnh sửa vai trò",
-              path: "/role/edit/:id",
+              translationKey: "role.edit",
+              path: "/role/edit",
               isShow: false,
             },
             DETAIL_ROLE: {
               key: "DETAIL_ROLE",
-              label: "Chi tiết vai trò",
-              path: "/role/detail/:id",
+              translationKey: "role.detail",
+              path: "/role/detail",
               isShow: false,
             },
           },
         },
         ASSIGN_PERMISSION: {
           key: "ASSIGN_PERMISSION",
-          label: "Phân quyền",
+          translationKey: "menu.roleManager",
           path: "/assign-permission",
           isShow: true,
+        },
+      },
+    },
+
+    SETTING_SYSTEM: {
+      key: "SETTING_SYSTEM",
+      translationKey: "menu.systemSettings",
+      icon: "pi pi-cog",
+      children: {
+        SETTING_LANGUAGE: {
+          key: "SETTING_LANGUAGE",
+          translationKey: "settings.language",
+          path: "setting-system/setting-language",
+        },
+        SETTING_STRING: {
+          key: "SETTING_STRING",
+          translationKey: "settings.dynamicConfig",
+          path: "setting-system/setting-string",
         },
       },
     },

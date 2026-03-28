@@ -1,8 +1,9 @@
 import { ROUTES } from "@/common/constants/routes";
 import { useConfig } from "@/context/ConfigContext";
 import { useTheme } from "@/context/ThemeContext";
+import { useTranslation } from "@/context/TranslationContext";
 import { usePermission } from "@/hooks/layout/usePermission";
-import { convertRoutesToMenuItems } from "@/utils/route.util";
+import { convertRoutesToMenuItems } from "@/utils";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -45,6 +46,7 @@ const getAllChildKeys = (item: MenuItem): string[] => {
 
 export default function AppSidebar({ collapsed }: AppSidebarProps) {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const { settings } = useConfig();
   const { hasPermission } = usePermission();
   const location = useLocation();
@@ -54,8 +56,8 @@ export default function AppSidebar({ collapsed }: AppSidebarProps) {
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const isDark = theme === "dark";
   const menuItems = useMemo(
-    () => convertRoutesToMenuItems(ROUTES.MAIN, hasPermission),
-    [hasPermission],
+    () => convertRoutesToMenuItems(ROUTES.MAIN, hasPermission, t),
+    [hasPermission, t],
   );
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { ROUTES } from "@/common/constants/routes";
+import { ROUTES } from "@/common/constants";
 import { useRouter } from "@/routers/hooks";
 
 const useGoBack = () => {

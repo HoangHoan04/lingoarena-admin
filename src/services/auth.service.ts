@@ -5,47 +5,47 @@ import type {
   UserInfoResponseDto,
   UserLogInResponseDto,
 } from "@/dto/auth.dto";
-import { apiRequest } from "@/utils/api-client";
+import rootApiService from "./api.service";
 import { API_ENDPOINTS } from "./endpoint";
 
 export const authService = {
   login: async (data: LoginReq): Promise<UserLogInResponseDto> => {
-    const response = await apiRequest.post<UserLogInResponseDto>(
+    const response = await rootApiService.post<UserLogInResponseDto>(
       API_ENDPOINTS.AUTH.LOGIN,
-      data
+      data,
     );
-    return response.data;
+    return response;
   },
 
   refreshToken: async (
-    data: RefreshTokenReq
+    data: RefreshTokenReq,
   ): Promise<RefreshTokenResponseDto> => {
-    const response = await apiRequest.post<RefreshTokenResponseDto>(
+    const response = await rootApiService.post<RefreshTokenResponseDto>(
       API_ENDPOINTS.AUTH.REFRESH_TOKEN,
-      data
+      data,
     );
-    return response.data;
+    return response;
   },
 
   getUserInfo: async (): Promise<UserInfoResponseDto> => {
-    const response = await apiRequest.post<UserInfoResponseDto>(
-      API_ENDPOINTS.AUTH.ME
+    const response = await rootApiService.post<UserInfoResponseDto>(
+      API_ENDPOINTS.AUTH.ME,
     );
-    return response.data;
+    return response;
   },
 
   logout: async (): Promise<{ message: string }> => {
-    const response = await apiRequest.post<{ message: string }>(
-      API_ENDPOINTS.AUTH.LOGOUT
+    const response = await rootApiService.post<{ message: string }>(
+      API_ENDPOINTS.AUTH.LOGOUT,
     );
-    return response.data;
+    return response;
   },
 
   changePassword: async (data: any): Promise<{ message: string }> => {
-    const response = await apiRequest.post<{ message: string }>(
+    const response = await rootApiService.post<{ message: string }>(
       API_ENDPOINTS.AUTH.CHANGE_PASSWORD,
-      data
+      data,
     );
-    return response.data;
+    return response;
   },
 };

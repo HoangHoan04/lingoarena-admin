@@ -6,6 +6,7 @@ import { ChangePasswordModal } from "@/components/ui/change-password/ChangePassw
 import { useAuth } from "@/context/AuthContext";
 import { ConfigProvider, useConfig } from "@/context/ConfigContext";
 import { useToast } from "@/context/ToastContext";
+import { useTranslation } from "@/context/TranslationContext";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import AppFooter from "./AppFooter";
@@ -97,12 +98,15 @@ function AppLayoutContent() {
 export default function AppLayout() {
   const { logout } = useAuth();
   const { showToast } = useToast();
+  const { t } = useTranslation();
 
   const handleAutoLogout = async () => {
     showToast({
       type: "warn",
-      title: "Tự động đăng xuất",
-      message: "Bạn đã bị đăng xuất do không hoạt động",
+      title: t("settings.auto_logout_title") || "Tự động đăng xuất",
+      message:
+        t("settings.auto_logout_message") ||
+        "Bạn đã bị đăng xuất do không hoạt động",
       timeout: 3000,
     });
 

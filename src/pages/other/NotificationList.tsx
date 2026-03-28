@@ -1,4 +1,4 @@
-import { formatTimeAgo } from "@/common/helpers/format";
+import { formatTimeAgo } from "@/common/helpers/formatHelper";
 import BaseView from "@/components/ui/BaseView";
 import FilterComponent, {
   type FilterField,

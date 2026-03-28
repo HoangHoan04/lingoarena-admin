@@ -1,5 +1,5 @@
 import { error } from "@/assets/animations";
-import { ROUTES } from "@/common/constants/routes";
+import { ROUTES } from "@/common/constants";
 import Lottie from "lottie-react";
 import type { JSX } from "react";
 import { Link } from "react-router-dom";

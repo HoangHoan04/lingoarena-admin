@@ -1,6 +1,6 @@
 import { Toast } from "primereact/toast";
 import type { ReactNode } from "react";
-import { createContext, useContext, useRef } from "react";
+import { createContext, useContext, useEffect, useRef } from "react";
 
 export type ToastContextType = {
   showToast: (options: {

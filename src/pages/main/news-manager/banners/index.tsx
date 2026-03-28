@@ -1,4 +1,4 @@
-import { ROUTES } from "@/common/constants/routes";
+import { ROUTES } from "@/common/constants";
 import { enumData } from "@/common/enums/enum";
 import ActionConfirm, {
   type ActionConfirmRef,
