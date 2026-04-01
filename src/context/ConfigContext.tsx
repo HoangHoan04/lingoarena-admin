@@ -81,7 +81,7 @@ export const ConfigProvider: React.FC<{
     try {
       localStorage.setItem("appSettings", JSON.stringify(settings));
     } catch (error) {
-      console.error("Error saving settings to localStorage:", error);
+      throw error;
     }
   }, [settings]);
 
@@ -89,7 +89,7 @@ export const ConfigProvider: React.FC<{
     try {
       localStorage.setItem("footerSettings", JSON.stringify(footerSettings));
     } catch (error) {
-      console.error("Error saving footer settings to localStorage:", error);
+      throw error;
     }
   }, [footerSettings]);
 
@@ -145,7 +145,6 @@ export const ConfigProvider: React.FC<{
       }
 
       timeout = setTimeout(() => {
-        console.log("Auto logout triggered");
         onAutoLogout();
       }, logoutTime);
     };
@@ -197,7 +196,7 @@ export const ConfigProvider: React.FC<{
       localStorage.removeItem("appSettings");
       localStorage.removeItem("footerSettings");
     } catch (error) {
-      console.error("Error clearing settings from localStorage:", error);
+      throw error;
     }
   };
 

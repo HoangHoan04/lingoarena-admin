@@ -56,7 +56,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       setUser(response.user);
       navigate("/");
     } catch (error) {
-      console.error("Login failed:", error);
       throw error;
     } finally {
       setIsLoading(false);
@@ -67,7 +66,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     try {
       await authService.logout();
     } catch (error) {
-      console.error("Logout error:", error);
+      throw error;
     } finally {
       tokenCache.clear();
       setUser(null);

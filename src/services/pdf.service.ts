@@ -41,8 +41,12 @@ export interface PdfExportResult {
 
 class PdfService {
   private readonly DEFAULT_FONT_SIZE = 10;
-  private readonly DEFAULT_HEADER_COLOR: [number, number, number] = [31, 78, 121]; // #1F4E79
-  private readonly DEFAULT_ALT_ROW_COLOR: [number, number, number] = [235, 243, 255];
+  private readonly DEFAULT_HEADER_COLOR: [number, number, number] = [
+    31, 78, 121,
+  ]; // #1F4E79
+  private readonly DEFAULT_ALT_ROW_COLOR: [number, number, number] = [
+    235, 243, 255,
+  ];
 
   // ----------------------------------------------------------
   // EXPORT TABLE DATA TO PDF
@@ -54,7 +58,7 @@ class PdfService {
   async exportTableToPdf<T>(
     data: T[],
     columns: PdfColumn[],
-    options: PdfOptions = {}
+    options: PdfOptions = {},
   ): Promise<PdfExportResult> {
     const {
       filename = `export_${Date.now()}.pdf`,
@@ -143,12 +147,15 @@ class PdfService {
             content: displayValue,
             styles: { halign: col.align || "left" } as Partial<Styles>,
           };
-        })
+        }),
       );
 
       // Tính độ rộng cột
       const tableWidth = pageWidth - 30;
-      const totalWeight = columns.reduce((sum, col) => sum + (col.width || 1), 0);
+      const totalWeight = columns.reduce(
+        (sum, col) => sum + (col.width || 1),
+        0,
+      );
       const columnStyles: Record<number, Partial<Styles>> = {};
       columns.forEach((col, idx) => {
         const colWidth = ((col.width || 1) / totalWeight) * tableWidth;
@@ -202,7 +209,6 @@ class PdfService {
       const pagesCount = (doc as any).internal.getNumberOfPages?.() ?? 1;
       return { success: true, filename, pagesCount };
     } catch (error) {
-      console.error("[PdfService] exportTableToPdf error:", error);
       throw new Error("Có lỗi xảy ra khi xuất file PDF");
     }
   }
@@ -216,7 +222,7 @@ class PdfService {
    */
   async exportHtmlToPdf(
     elementId: string,
-    options: PdfOptions = {}
+    options: PdfOptions = {},
   ): Promise<PdfExportResult> {
     const {
       filename = `export_${Date.now()}.pdf`,
@@ -277,7 +283,6 @@ class PdfService {
       const pagesCount = (doc as any).internal.getNumberOfPages?.() ?? 1;
       return { success: true, filename, pagesCount };
     } catch (error) {
-      console.error("[PdfService] exportHtmlToPdf error:", error);
       throw new Error("Có lỗi xảy ra khi xuất HTML sang PDF");
     }
   }
@@ -292,7 +297,7 @@ class PdfService {
   async previewTablePdf<T>(
     data: T[],
     columns: PdfColumn[],
-    options: PdfOptions = {}
+    options: PdfOptions = {},
   ): Promise<void> {
     const {
       title,
@@ -345,18 +350,26 @@ class PdfService {
 
       const tableHeaders = columns.map((col) => ({
         content: col.header,
-        styles: { halign: col.align || "left", fontStyle: "bold" } as Partial<Styles>,
+        styles: {
+          halign: col.align || "left",
+          fontStyle: "bold",
+        } as Partial<Styles>,
       }));
 
       const tableRows: RowInput[] = data.map((item: any) =>
         columns.map((col) => {
           const value = this.getNestedValue(item, col.field);
-          return col.formatter ? col.formatter(value) : this.formatCellValue(value);
-        })
+          return col.formatter
+            ? col.formatter(value)
+            : this.formatCellValue(value);
+        }),
       );
 
       const tableWidth = pageWidth - 30;
-      const totalWeight = columns.reduce((sum, col) => sum + (col.width || 1), 0);
+      const totalWeight = columns.reduce(
+        (sum, col) => sum + (col.width || 1),
+        0,
+      );
       const columnStyles: Record<number, Partial<Styles>> = {};
       columns.forEach((col, idx) => {
         columnStyles[idx] = {
@@ -392,9 +405,14 @@ class PdfService {
           doc.setTextColor(150, 150, 150);
           if (footerText) doc.text(footerText, 15, pageH - 8);
           if (showPageNumber) {
-            doc.text(`Trang ${hookData.pageNumber}`, pageWidth - 15, pageH - 8, {
-              align: "right",
-            });
+            doc.text(
+              `Trang ${hookData.pageNumber}`,
+              pageWidth - 15,
+              pageH - 8,
+              {
+                align: "right",
+              },
+            );
           }
         },
       });
@@ -406,7 +424,6 @@ class PdfService {
       // Giải phóng URL sau 60 giây
       setTimeout(() => URL.revokeObjectURL(url), 60_000);
     } catch (error) {
-      console.error("[PdfService] previewTablePdf error:", error);
       throw new Error("Có lỗi xảy ra khi xem trước PDF");
     }
   }
@@ -421,7 +438,7 @@ class PdfService {
   async printTablePdf<T>(
     data: T[],
     columns: PdfColumn[],
-    options: PdfOptions = {}
+    options: PdfOptions = {},
   ): Promise<void> {
     const {
       title,
@@ -463,18 +480,26 @@ class PdfService {
 
       const tableHeaders = columns.map((col) => ({
         content: col.header,
-        styles: { halign: col.align || "left", fontStyle: "bold" } as Partial<Styles>,
+        styles: {
+          halign: col.align || "left",
+          fontStyle: "bold",
+        } as Partial<Styles>,
       }));
 
       const tableRows: RowInput[] = data.map((item: any) =>
         columns.map((col) => {
           const value = this.getNestedValue(item, col.field);
-          return col.formatter ? col.formatter(value) : this.formatCellValue(value);
-        })
+          return col.formatter
+            ? col.formatter(value)
+            : this.formatCellValue(value);
+        }),
       );
 
       const tableWidth = pageWidth - 30;
-      const totalWeight = columns.reduce((sum, col) => sum + (col.width || 1), 0);
+      const totalWeight = columns.reduce(
+        (sum, col) => sum + (col.width || 1),
+        0,
+      );
       const columnStyles: Record<number, Partial<Styles>> = {};
       columns.forEach((col, idx) => {
         columnStyles[idx] = {
@@ -505,12 +530,9 @@ class PdfService {
           const pageH = doc.internal.pageSize.getHeight();
           doc.setFontSize(8);
           doc.setTextColor(150, 150, 150);
-          doc.text(
-            `Trang ${hookData.pageNumber}`,
-            pageWidth - 15,
-            pageH - 8,
-            { align: "right" }
-          );
+          doc.text(`Trang ${hookData.pageNumber}`, pageWidth - 15, pageH - 8, {
+            align: "right",
+          });
         },
       });
 
@@ -527,7 +549,6 @@ class PdfService {
         setTimeout(() => document.body.removeChild(iframe), 5000);
       };
     } catch (error) {
-      console.error("[PdfService] printTablePdf error:", error);
       throw new Error("Có lỗi xảy ra khi in PDF");
     }
   }
@@ -539,16 +560,17 @@ class PdfService {
   /**
    * In nội dung HTML của một element qua cửa sổ in trình duyệt
    */
-  printHtmlElement(elementId: string, options?: { title?: string; css?: string }): void {
+  printHtmlElement(
+    elementId: string,
+    options?: { title?: string; css?: string },
+  ): void {
     const element = document.getElementById(elementId);
     if (!element) {
-      console.error(`[PdfService] Element #${elementId} không tồn tại`);
       return;
     }
 
     const printWindow = window.open("", "_blank", "width=900,height=700");
     if (!printWindow) {
-      console.error("[PdfService] Không thể mở cửa sổ in (popup bị chặn?)");
       return;
     }
 
@@ -600,7 +622,7 @@ class PdfService {
   async getPdfBlob<T>(
     data: T[],
     columns: PdfColumn[],
-    options: PdfOptions = {}
+    options: PdfOptions = {},
   ): Promise<Blob> {
     const {
       title,
@@ -635,8 +657,10 @@ class PdfService {
     const tableRows: RowInput[] = data.map((item: any) =>
       columns.map((col) => {
         const value = this.getNestedValue(item, col.field);
-        return col.formatter ? col.formatter(value) : this.formatCellValue(value);
-      })
+        return col.formatter
+          ? col.formatter(value)
+          : this.formatCellValue(value);
+      }),
     );
 
     const tableWidth = pageWidth - 30;

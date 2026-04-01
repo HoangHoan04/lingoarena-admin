@@ -181,7 +181,6 @@ class ExcelService {
       XLSX.utils.book_append_sheet(workbook, dataSheet, sheetName);
       XLSX.writeFile(workbook, filename);
     } catch (error) {
-      console.error("[ExcelService] exportToExcel error:", error);
       throw new Error("Có lỗi xảy ra khi xuất file Excel");
     }
   }
@@ -404,7 +403,6 @@ class ExcelService {
 
       XLSX.writeFile(workbook, filename);
     } catch (error) {
-      console.error("[ExcelService] downloadTemplate error:", error);
       throw new Error("Có lỗi xảy ra khi tải template");
     }
   }
